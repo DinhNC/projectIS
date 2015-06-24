@@ -1,0 +1,76 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+body {
+    margin:10px 10px;
+    background-color: #EEEEEE;
+}
+#container, #header, #footer {
+    text-align:center;
+}
+#container {
+    background-color:#FFFFFF;
+    margin:50px auto;
+    padding:5px;
+    width:600px;
+    height:auto;
+    clear:both;
+    position:relative;
+}
+#container table {
+    margin:20px auto;
+    width:auto;
+}
+#container table td, th {
+    padding:5px 10px;
+}
+#container table th {
+    font-style:italic;
+    background-color:#000000;
+    color: #FFFFFF;
+}
+#footer {
+    margin:20px 0px;
+}
+.bold {
+    background-color:#CCCCCC;
+    font-style: italic;
+    font-weight: bold;
+}
+.nav , .nav-tabs {
+    margin:0px 10px;
+}
+.pager {
+    width:400px;
+    margin:10px auto;
+}
+.form-group {
+    margin:0px 5px;
+}
+.notify {
+    margin:20px auto;
+}
+.state-idle {
+    font-weight: bold;
+    color: #0066FF;
+}
+.state-stopped {
+    font-weight: bold;
+    color: #FF0000;
+}
+.state-updating {
+    font-weight: bold;
+    color: #008A00;
+}
+.state-error {
+    font-weight: bold;
+    color: #E65C00;
+}
+.state-nochild {
+    font-weight: bold;
+    color: #CCCC00;
+}
+.error {
+    color:#FF0101;
+}

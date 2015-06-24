@@ -1,0 +1,54 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title #{title} - Gandalf
+		link(rel='stylesheet', type='text/css', href='/bootstrap/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/customize.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/sweet-alert.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/jquery.datetimepicker.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/select2-bootstrap.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/select2.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/bootstrap-editable.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/font-awesome.min.css') 
+		link(rel='stylesheet', type='text/css', href='/stylesheets/parsley.css') 
+		script(type='text/javascript', src='/jquery/jquery.min.js')
+		//- script(type='text/javascript', src='//connect.facebook.net/en_US/sdk.js#version=#{localConfig.facebook_app_version}')
+		script(type='text/javascript', src='/javascripts/javascript-effect.js')
+		script(type='text/javascript', src='/javascripts/functions.js')
+		script(type='text/javascript', src='/javascripts/javascript-control.js')
+		script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')
+		//- script(type='text/javascript', src='//cdn.socket.io/socket.io-1.3.5.js')
+		script(type='text/javascript', src='/javascripts/sweet-alert.min.js')
+		script(type='text/javascript', src='/javascripts/jquery.datetimepicker.js')
+		script(type='text/javascript', src='/javascripts/select2.js')
+		script(type='text/javascript', src='/javascripts/bootstrap-editable.min.js')
+		script(type='text/javascript', src='/javascripts/parsley.js') 
+	body
+		//- include ./includes/js/fb-init.jade
+		header.navbar.navbar-static-top
+			div.container
+				div.navbar-header
+					//- img(src='/images/logo.jpg')
+				ul.nav.navbar-nav.navbar-right
+					li
+						span.glyphicon.glyphicon-set.glyphicon-user
+						span.information-name CongDinh
+						button(class="btn btn-signout btn-sm", onclick="window.location='/login/logout'")
+								| Sign Out
+						if identify
+							span.glyphicon.glyphicon-set.glyphicon-user
+							span.information-name #{identify.fullname}
+							button(class="btn btn-signout btn-sm", onclick="window.location='/login/logout'")
+								| Sign Out		
+			div.container
+				nav.collapse.navbar-collapse(role="navigation")
+					include ./views/navigator.jade			
+		.container
+			.row
+				.col-sm-12.col-md-12.col-lg-12.container
+					block content
+		.row
+			.col-sm-12.text-center.strong
+				| &copy; YouNet Media - A Checking Tool For SocialHeat
+		block scripts
