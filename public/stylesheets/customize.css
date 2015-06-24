@@ -86,10 +86,10 @@
 .col-sm-custom {
 	width: 360px;
 }
-.textarea-test-sentiment.form-control{
+.textarea-test-sentence.form-control{
 	padding: 2px;
 	margin: 5px 0;
-	height: 160px;
+	height: 100px;
 	text-align: justify;
 }
 

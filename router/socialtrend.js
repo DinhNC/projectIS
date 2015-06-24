@@ -1,15 +1,24 @@
 var express                 = require('express');
 var router                  = express.Router();
+var Analyzer 				= require(__dirname + '/../models/Analyzer');
 
-
-var headerTitle             = 'Social Trend'
+var modelAnalyzer 			= new Analyzer();
+var headerTitle             = 'Information Retrieval Social Media';
 
 
 router.all("/",function(req, res, next) {
-    res.render('test', {
-        title: 'DINH OI',
+    res.render('analyzer', {
+        title: 'Analyzer',
         headerTitle: headerTitle
     });
+});
+
+router.all("/sentence-analyze", function(req, res){
+	var content 	= req.param('content') || '';
+
+	var results 	= modelAnalyzer.process(content)
+	console.log('content: ', content);
+
 });
 
 module.exports = router;
