@@ -11,6 +11,8 @@ var busboy					= require('connect-busboy');
 
 var socialTrend 			= require('./router/socialtrend');
 
+var DataControl				= require('./router/DataControl');
+
 var app     = express();
 var server 	= require('http').Server(app);
 var io 		= require('socket.io')(server);
@@ -34,6 +36,7 @@ app.use(busboy());
 
 
 app.use('/', socialTrend);
+app.use('/dataset', DataControl);
 
 
 module.exports = {

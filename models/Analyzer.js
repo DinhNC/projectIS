@@ -1,3 +1,7 @@
+var domains 		= require(__dirname + '/../data/domains');
+
+
+
 var Analyzer = function(){
 
 };
