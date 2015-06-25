@@ -1,6 +1,6 @@
 var domains = {};
 
-domains = [
+domains['data'] = [
 	{
 		id 			: 1,
 		identity 	: 'motobike',

@@ -191,7 +191,7 @@ a:focus {
         font-size: 26px;
     }
 }
-
+/*
 .btn-circle {
     width: 70px;
     height: 70px;
@@ -230,7 +230,7 @@ a:focus {
     -moz-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
     -moz-animation-timing-function: linear;
-}
+}*/
 
 @-webkit-keyframes pulse {    
     0% {
@@ -314,7 +314,7 @@ a:focus {
         margin-top: 250px;
     }
 }
-
+/*
 .btn {
     border-radius: 0;
     text-transform: uppercase;
@@ -323,9 +323,9 @@ a:focus {
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
-}
+}*/
 
-.btn-default {
+/*.btn-default {
     border: 1px solid #42dca3;
     color: #42dca3;
     background-color: transparent;
@@ -337,7 +337,7 @@ a:focus {
     outline: 0;
     color: #000;
     background-color: #42dca3;
-}
+}*/
 
 ul.banner-social-buttons {
     margin-top: 0;

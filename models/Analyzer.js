@@ -1,4 +1,4 @@
-var domains 		= require(__dirname + '/../data/domains');
+var domains 		= require(__dirname + '/../data/domains/domains');
 
 
 
