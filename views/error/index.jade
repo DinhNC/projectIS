@@ -1,0 +1,17 @@
+extend ../../layout
+
+block content
+    if message
+        .col-sm-offet-3.col-md-offset-3.col-sm-6.col-md-6.panel.panel-danger
+            .panel-heading
+                h2.text-left
+                    span.text-danger #{error}
+            .col-sm-12.col-md-12.panel-body
+                span.strong.text-left #{message}
+                span
+                    span &nbsp;
+                    a#showDetail View Detail
+            .col-sm-12.col-md-12.text-left#detail
+                -for ( var col in detail )
+                    .col-sm-2.col-md-2 #{col}  
+                    .col-sm-10.col-md-10 : #{detail[col]}

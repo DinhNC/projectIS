@@ -17,6 +17,10 @@
     "stylus"          : "latest",
     "jade"            : "latest",
     "qs"              : "latest",
-    "querystring"     : "latest"
+    "querystring"     : "latest",
+    "mysql"           : "latest",
+    "phpjs"           : "latest",
+    "unorm"           : "latest",
+    "async"           : "latest"
   }
 }

@@ -1,19 +1,20 @@
 
 var qs 						= require('querystring');
 var express                 = require('express');
+var async 					= require('async');
 var router                  = express.Router();
-var DataControl 			= require(__dirname + '/../models/DataControl');
+var ModelDomains 			= require(__dirname + '/../models/Domains');
+var ModelDomainKeyword 		= require(__dirname + '/../models/DomainKeyword');
 
-var modelDataControl 		= new DataControl();
-var headerTitle             = 'Information Retrieval Social Media';
+var modelDomains 			= new ModelDomains();
+var modelDomainKeyword 		= new ModelDomainKeyword();
+var headerTitle             = 'Data Management';
 
 var DBlimit 				= 20;
 
 router.all("/",function(req, res, next) {
 
 	var input 				= req.param('input') || '';
-	var results 			= modelDataControl.process();
-	var total_pages			= results.length;
 
 	if( !req.query.page )
     {
@@ -23,16 +24,39 @@ router.all("/",function(req, res, next) {
     var page        		= req.query.page;
     res.locals.query 		= req.query;
 
-    var data 				= results.slice(page?(page-1)*DBlimit:0, page?page*20:20);
-    console.log('data: ', data);
+    async.parallel({
+		'domains'			: function(callback)
+		{
+			modelDomains.fetchAll(callback);
+		},
+		'domain_keyword'	: function(callback)
+		{
+			modelDomainKeyword.fetchAll(callback);
+		}
+	}, function(error, results){
 
-    res.render('datacontrol', {
-        title 			: 'DataSet',
-        input			: input,
-        total_pages		: total_pages,
-        data 			: data,
-        headerTitle 	: headerTitle
-    });
+		console.log('error/results: ', error, results);
+
+		if( error )
+		{
+			res.render('error/index', {
+				error		: "ERROR !",
+				title		: "ERROR !",
+				message		: "Đã có lỗi xãy ra, Vui lòng thử lại.",
+				detail		: error
+			});
+			return;
+		}
+		
+		res.render('datacontrol', {
+			title 			: 'DataSet',
+	        input			: input,
+	        total_pages		: 1,
+	        data 			: [],
+	        headerTitle 	: headerTitle
+		});
+	});
+	return;
 });
 
 // router.all("/sentence-analyze", function(req, res){
