@@ -93,6 +93,13 @@
 	text-align: justify;
 }
 
+.textarea-test-keyword.form-control{
+	padding: 2px;
+	margin: 5px 0;
+	height: 50px;
+	text-align: justify;
+}
+
 .title-test-sentimen {
 	padding: 11px;
 	margin: 15px 0;

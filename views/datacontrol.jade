@@ -9,20 +9,20 @@ block content
 		form.form-horizontal(role='form')
 			.row.form-group
 				.col-md-7.col-md-offset-2
-					input.form-control(id='search', name='input', value='#{input}', type ='text', placeholder='Keyword')
+					input.form-control(id='search', name='input', value='#{input}', type ='text', placeholder='id_social or link')
 				.col-md-1
 					button.btn-info.btn-sm(type='submit') Search
 	.row
 		.bs-callout.bs-callout-danger
-			// - var results 	= (categoryData && categoryData.length)?categoryData.length:0
-			// - var offset 	= 20*params.page
-			//- span Show 
-			//- span  #{results}
-			//- span  result(s) from 
-			//- span  #{offset}
-			//- span  to #{offset + results}
-			//- span  of total #{categoryCount} 
-			//- span  row(s)
+			- var results 	= data.length;
+			- var offset 	= 20*locals.query.page
+			span Show 
+			span  #{results}
+			span  result(s) from 
+			span  #{offset}
+			span  to #{offset + results}
+			span  of total #{total_pages} 
+			span  row(s)
 	.row
 		form.form-horizontal(role='form')
 			.col-md-2
@@ -31,18 +31,30 @@ block content
 	.row
 		table.table.table-hover.table-striped.table-bordered.text-justify 	
 			tr.info
-				th.text-center Id 
+				th.text-center Id
+				th.text-center Id Social
+				th.text-center Link
+				th.text-center FanPage
+				th.text-center Type
+				th.text-center Like
+				th.text-center Share
 				th.text-center Keyword
-				th.text-center Domain
-				//- th.text-center Name
 				th.text-center Action
 			if data
 				- each source in data
 					tr(class='table_data', data-source=source)
 						td #{source.id}
-						td #{source.keyword}
-						td #{source.domain_name}
+						td #{source.id_social}
 						td
+							a(href='https://www.facebook.com/#{source.id_social}') #{source.name}
+						td #{source.fanpage}
+						td #{source.type}
+						td #{source.like}
+						td #{source.share}
+						td 
+							a #{source.keywords}
+						td
+							a(class='add_keyword', data-source=source, style='color:red') Add
 
 	.row
 		ul.pager
@@ -55,7 +67,7 @@ block content
 					a Previous 
 			else
 				li 
-					//- a(href='?#{qs.stringify(locals.query)}') Previous 
+					a(href='?#{qs.stringify(locals.query)}') Previous 
 			
 			- locals.query.page = currentPage + 1
 			if (currentPage + 1) >= nPage	
@@ -63,5 +75,27 @@ block content
 					a Next 
 			else
 				li 
-					//- a(href='?#{qs.stringify(locals.query)}') Next
+					a(href='?#{qs.stringify(locals.query)}') Next
 
+	#modelAddKeyword.modal.fade(role='dialog', aria-hidden='true', tabindex="-1", aria-labelledby="myModalKeyword")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal')
+						span(aria-hidden='true') ×
+						span.sr-only Close
+					h4#myModalLabel.modal-title
+				.modal-body
+					form-group
+						.col-md-2
+							label Keywords:
+						.col-md-8
+							textarea.textarea-test-keyword.form-control(class='keyword-input' type='text')
+				br
+				br
+				.modal-footer.text-center
+					button.btn.btn-primary(class='keywords-submit' type='button' data-action='sentiment') Save
+					button.btn.btn-primary(type='button' data-dismiss='modal' data-action='cancel') Cancel	
+
+block scripts
+	script(type='text/javascript', src='/javascripts/data-control.js')

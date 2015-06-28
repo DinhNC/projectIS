@@ -22,14 +22,14 @@ Helper_Object.buildObjectDomain = function(domains, links)
 			name		: temp.identity,
 			vector 		: [],
 			arrKey		: [],
+			originKey	: [],
+			countKey 	: 0,
 			links 		: objLinks,
 			distance 	: -1,
 			range 		: -1
 		};
 
 	}
-
-	
 
 	return results;
 };
@@ -50,6 +50,8 @@ Helper_Object.buildObjectLink = function(domain, links)
 			
 			temp.vector 	= [];
 			temp.arrKey 	= [];
+			temp.originKey 	= [];
+			temp.countKey 	= 0;
 			temp.distance 	= -1;
 			temp.range 		= -1;
 			
@@ -59,6 +61,15 @@ Helper_Object.buildObjectLink = function(domain, links)
 	}
 
 	return results;
+};
+
+Helper_Object.distanceTwoObject = function(objA, objB)
+{
+	var distance =	0;
+	for( var i = 0; i < objA.length; i++ ){
+		distance += Math.pow(objA[i]-objB[i], 2);
+	}
+	return Math.sqrt(distance);
 };
 
 module.exports = Helper_Object;

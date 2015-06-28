@@ -38,4 +38,20 @@ LinkOfKeyword.prototype.fetchAll = function(callback)
 	);
 };
 
+LinkOfKeyword.prototype.savekeyword = function(data, callback)
+{
+    var sql = '';
+    for( var i = 0; i < data.length; i++ )
+    {
+        sql += "REPLACE INTO `" + tableData + "` (`id_link`, `name`) VALUES (" + data[i].id_link + ", '" + data[i].name + "'); ";
+    }
+    console.log('......sql: ', sql);
+    console.log('----------------------------');
+    connection.query(
+        sql,
+        callback
+    );
+
+};
+
 module.exports = LinkOfKeyword;

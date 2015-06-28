@@ -8,19 +8,26 @@ block content
 	br
 	.row
 		.col-md-6.col-sm-6
+			//- form.form-horizontal(role='form' id='form-search')
+			//- 	.form-group
 			.row
 				h4.text-center(style='color:#5bc0de') Input
 			.row
 				.col-sm-2.col-md-2
 					p Sentence:
 				.col-sm-10.col-md-10
-					textarea.textarea-test-sentence(class='txt_content form-control', type='text', name='content', id='sentence', required) #{icontents}
+					textarea.textarea-test-sentence(class='txt_content form-control', type='text', name='content', id='sentence', required) #{content}
+			.row
+				.col-sm-2.col-md-2
+					p Totals:
+				.col-sm-10.col-md-10
+					input.form-control(class'input_link', type='text', name='total_link', id='total_link', value='#{link_totals}')
 			.row
 				.col-sm-12.col-md-12.text-right
 					button(class='btn_analyse btn btn-info btn-sm', type='submit', name='Submit', analyze='Analyze') Analyze
 					span &nbsp;
 					button(class='btn_reset btn btn-default btn-sm', type='reset') Reset
-			br
+				br
 		.col-sm-6.col-md-6
 			h4.text-center(style='color:#5bc0de') Analysis Result
 			.row
@@ -34,12 +41,14 @@ block content
 						thead
 							tr(class='info')
 								th(class='text-center') No 
-								th(class='text-center') Group/Fanpage
 								th(class='text-center') Link
+								th(class='text-center') Type
+								th(class='text-center') Like
+								th(class='text-center') Share
 						tbody
-			//- .row
-			//- 	.col-sm-12.col-md-12
-			//- 		label Processing Flow
+			.row
+				.col-sm-12.col-md-12
+					p.text-center(class='analyzer-info' style='color:red')
 			//- .row
 			//- 	.col-sm-12.col-md-12
 			//- 		pre(class='text-results')
