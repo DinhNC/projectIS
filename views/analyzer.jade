@@ -12,9 +12,10 @@ block content
 			//- 	.form-group
 			.row
 				h4.text-center(style='color:#5bc0de') Input
+			br
 			.row
 				.col-sm-2.col-md-2
-					p Sentence:
+					p Content:
 				.col-sm-10.col-md-10
 					textarea.textarea-test-sentence(class='txt_content form-control', type='text', name='content', id='sentence', required) #{content}
 			.row
@@ -31,10 +32,10 @@ block content
 		.col-sm-6.col-md-6
 			h4.text-center(style='color:#5bc0de') Analysis Result
 			.row
+				.col-md-3.col-md-offset-3
+					p.text-center F-measure:
 				.col-md-4
-					p F-measure:
-				.col-md-8
-					a(class='results_score')
+					p.text-left(class='results_score', style='color:red')
 			.row
 				.col-sm-12.col-md-12
 					table(class='table table-bordered table-hover', id='table-results')

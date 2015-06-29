@@ -7,6 +7,13 @@ $('.btn_reset').click(function(evt){
 	$('#content').val("");
 });
 
+$('.btn_reset').click(function(evt){
+
+	$('.txt_content').empty();
+	$('.input_link').val(5);
+
+});
+
 $('.btn_analyse').click(function(evt){
 	var content 	= $('#sentence').val();
 	var total_link 	= $('#total_link').val();
@@ -54,16 +61,23 @@ function setValueResults(results)
 
 	$("#table-results tbody").empty();
 	$(".analyzer-info").empty();
+	$('.results_score').empty();
+
 	$("#sentence").val(results.input);
 
 	var index 	= 0;
 	if( !data.length )
 	{
 		$(".analyzer-info").append('Không tìm thấy dữ liệu!');
+		return;
 	}
+
+	var f_measure = 0;
+
 	for( var i = 0; i < data.length; i++ )
 	{
 		index++;
+		f_measure 	+= data[i].rate;
 		$("#table-results tbody").append("<tr>" + 
 				"<td>"  + index + "</td>" +
 				"<td>"  + "<a href=https://www.facebook.com/" + data[i].id_social + "> " + data[i].name + "</a>" + "</td>" +
@@ -73,15 +87,5 @@ function setValueResults(results)
 			"</tr>");
 	};
 
-	// $(".score-results").empty();
-	// if( results instanceof Object )
-	// {
-	// 	$(".score-results").html("Total score: " +
-	// 			"<b>" + score + "</b>");
-	// }
-	// else{
-	// 	$(".score-results").html("Total score: " +
-	// 			"<b>" + results + "</b>");	
-	// }
-	// $(".text-results").text(JSON.stringify(text));
+	$('.results_score').append((f_measure/data.length).toFixed(2) + '%');
 };

@@ -4,6 +4,8 @@ var Domains 				= require(__dirname + '/../models/Domains');
 var DomainKeyword 			= require(__dirname + '/../models/DomainKeyword');
 var Links 					= require(__dirname + '/../models/Links');
 var KeywordLink 			= require(__dirname + '/../models/KeywordLink');
+var ShortForm 				= require(__dirname + '/../models/ShortForm');
+
 var Helper_Object 			= require(__dirname + '/../Helper/Object');
 var Helper_RegExp 			= require(__dirname + '/../Helper/RegExp');
 
@@ -13,6 +15,7 @@ var Analyzer = function(){
 	this.modelDomainKeyword 	= new DomainKeyword();
 	this.modelLinks 			= new Links();
 	this.modelKeywordLink		= new KeywordLink();
+	this.modelShortForm			= new ShortForm();
 
 	this.init();
 };
@@ -21,6 +24,8 @@ Analyzer.prototype.init = function()
 {
 	this.arrDomainKeyword		= [];
 	this.arrLinkKeyword 		= [];
+
+	this.arrShortForm 			= [];
 
 	this.domains 				= {};
 	// this.links 					= {};
@@ -47,6 +52,10 @@ Analyzer.prototype.loadData = function()
 		'link_keywords'		: function(callback)
 		{
 			that.modelKeywordLink.fetchAll(callback);
+		},
+		'short_forms'		: function(callback)
+		{
+			that.modelShortForm.fetchAll(callback);
 		}
 	}, function(error, results){
 
@@ -60,6 +69,7 @@ Analyzer.prototype.loadData = function()
 		var domain_keywords		= results['domain_keywords'];
 		var links 				= results['links'];
 		var link_keywords 		= results['link_keywords'];
+		var short_forms 		= results['short_forms'];
 
 		if( domains.length = 2 )
 		{
@@ -77,6 +87,12 @@ Analyzer.prototype.loadData = function()
 		{
 			link_keywords 		= link_keywords[0];
 		}
+		if( short_forms.length = 2 )
+		{
+			short_forms 		= short_forms[0];
+		}
+
+		that.arrShortForm 		= short_forms;
 
 		that.arrDomainKeyword 	= domain_keywords;
 		that.arrLinkKeyword 	= link_keywords;
@@ -170,10 +186,51 @@ Analyzer.prototype.preProcessSentence = function(content)
 	 |------------------------------------------
 	 */
 	var _content 	= content.trim();
+		_content	= this.prepairContent(_content);
 
 	this.countKeywordInDomain(content);
 
 	return _content;
+};
+
+Analyzer.prototype.prepairContent = function(content)
+{
+	// console.log('this.arrShortForm: ', this.arrShortForm);
+	if( !this.arrShortForm.length )
+	{
+		return content;
+	}
+
+	for( var i = 0; i < this.arrShortForm.length; i++ )
+	{
+		content 	= this.prepairShortForm(
+			this.arrShortForm[i].short_name,
+			this.arrShortForm[i].full_name,
+			content
+		);
+	}
+
+	return content;
+};
+
+Analyzer.prototype.prepairShortForm = function(arrKeyword, name, content)
+{
+	var keywords 	= null;
+	try{
+		keywords 	= JSON.parse(arrKeywords);
+	}
+	catch(e)
+	{
+		return content;
+	}
+	// console.log('-------------------------');
+	// console.log('keywords: ', keywords);
+	for( var i = 0; i < arrKeyword.length; i++ )
+	{
+		content 	= content.replace(arrKeyword[i], name);
+	}
+	// console.log('sentences: ', content);
+	return content;
 };
 
 Analyzer.prototype.countKeywordInDomain = function(content)
@@ -242,11 +299,9 @@ Analyzer.prototype.getLink = function(links, limit, vector)
 	}
 
 	arrLinks.sort(function(obj1, obj2) {
-		// Ascending: first age less than the previous
 		return obj2.countKey - obj1.countKey;
 	});
-	console.log('----------------------------------');
-	console.log('links: ', arrLinks);
+	// console.log('link: ', arrLinks[0]);a();
 	return arrLinks.slice(0, limit);
 };
 
