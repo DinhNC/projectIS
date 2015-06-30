@@ -1,26 +1,22 @@
-# [Intelligent Systems](http://startbootstrap.com/) - [Courses](http://startbootstrap.com/template-overviews/grayscale/)
+# [Project: Information Retrieval Social Media](http://startbootstrap.com/) - [Intelligent Systems Courses](http://startbootstrap.com/template-overviews/grayscale/)
 
-[Courses](http://startbootstrap.com/template-overviews/grayscale/) is a multipurpose, one page HTML theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This template features various content sections and a Google Maps section with a custom map marker.
+[Bài Tập Lớn Môn Hệ Thống Thông Minh](https://github.com/DinhNC/projectIS): Thiết kế một hệ thống cho phép người dùng nhập vào một mẫu quảng cáo bất kỳ thuộc lĩnh vực khác nhau, hệ thống sẽ xuất ra một số pages hoặc groups cho người dùng đăng quảng cáo của mình, ngoài ra hệ thống còn ước lượng độ chính xác này theo tỉ lệ %.
 
-## Getting Started
+## Tài liệu nghiên cứu liên quan
 
-To use this template, choose one of the following options to get started:
-* Download the latest release on Start Bootstrap
-* Fork this repository on GitHub
+Kỹ thuật truy xuất thông tin từ văn bản (Text Mining):
+Khai thác văn bản (Text Mining) là một nhánh của Data Mining nhằm tìm kiếm và trích xuất thông tin nằm trong văn bản. Hiện nay, với sự tăng trưởng nhanh chóng của dữ liệu văn bản, Text Mining ngày càng có nhiều ứng dụng trong thực tế như: 
 
-## Bugs and Issues
+* Lọc thư rác
+* Đối chiếu lý lịch cá nhân
+* Phân tích tình cảm (Sentiment)
+* Phân loại tài liệu
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/IronSummitMedia/startbootstrap-grayscale/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/grayscale/).
+## Mô tả hệ thống
 
-## Creator
 
-Start Bootstrap was created by and is maintained by **David Miller**, Managing Parter at [Iron Summit Media Strategies](http://www.ironsummitmedia.com/).
 
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
+## Hướng dẫn cài đặt và sử dụng hệ thống
 
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
 ## Copyright and License
-
-Copyright 2013-2015 Iron Summit Media Strategies, LLC. Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-grayscale/blob/gh-pages/LICENSE) license.
