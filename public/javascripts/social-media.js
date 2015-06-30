@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$(".headerTitle").html("Information Retrieval Social Media");
-	$(".titleGroup").html("Hệ thống phân tích các mẫu câu quảng cáo của người dùng và đưa ra những đề xuất <font color='#5bcfff'>groups</font> hoặc <font color='#5bcfff'>fanpages</font> mà người dùng nên đăng quảng cáo của mình. Ngoài ra hệ thống còn cho biết tỉ lệ chính xác của kết quả đề xuất này.");
+	$(".titleGroup").html("Hệ thống phân tích các mẫu câu quảng cáo của người dùng và đưa ra những đề xuất <font color='#5bcfff'>groups</font> hoặc <font color='#5bcfff'>pages</font> mà người dùng nên đăng quảng cáo của mình. Ngoài ra hệ thống còn cho biết tỉ lệ chính xác của kết quả đề xuất này.");
 });
 
 $('.btn_reset').click(function(evt){
@@ -8,8 +8,8 @@ $('.btn_reset').click(function(evt){
 });
 
 $('.btn_reset').click(function(evt){
-
-	$('.txt_content').empty();
+	// alert(1);
+	$('.txt_content').val('');
 	$('.input_link').val(5);
 
 });

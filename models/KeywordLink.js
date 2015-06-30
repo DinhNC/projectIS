@@ -31,7 +31,7 @@ var LinkOfKeyword = function()
 LinkOfKeyword.prototype.fetchAll = function(callback)
 {
 	var sql = "SELECT * FROM `" + tableData + "`";
-    console.log(' sql score: ', sql);
+    // console.log(' sql score: ', sql);
     connection.query(
 		sql,
 		callback
